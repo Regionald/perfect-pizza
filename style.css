@@ -26,6 +26,7 @@ body {
     background-color:#97a97c;
     border-radius: 1em;
     border-width: 0.1em;
+    margin-bottom: 1em;
     
 }
 .contact {
@@ -38,5 +39,7 @@ body {
 .headcenter{
  text-align: center;
 }
-
+.content{
+    margin-bottom: 1em;
+}
 
