@@ -45,6 +45,20 @@ function smallcostadd() {
     smallQty.innerHTML = smalltotalCost / 22.99;
     totalElem.innerHTML = "R" + totalAmount;
 
+    mediumtotalCost = 0;
+    var number = mediumtotalCost.toFixed(2);
+    mediumTotalelem.innerHTML = "R" + number;
+
+    mediumQty.innerHTML = mediumtotalCost / 60.50;
+    totalElem.innerHTML = "R" + totalAmount;
+
+    largetotalCost = 0;
+    var number = largetotalCost.toFixed(2);
+    largeTotalelem.innerHTML = "R" + number;
+
+    largeQty.innerHTML = largetotalCost / 120.75;
+    totalElem.innerHTML = "R" + totalAmount;
+
 }
 function smalladd() {
     smalltotalCost += 22.99;
@@ -106,8 +120,23 @@ function mediumcostadd() {
     var number = mediumtotalCost.toFixed(2);
     mediumTotalelem.innerHTML = "R" + number;
 
-    mediumQty.innerHTML = mediumtotalCost / 60.50;
+    var qtynumber = (mediumtotalCost / 60.50).toFixed(0);
+    mediumQty.innerHTML = qtynumber;
+
+    largetotalCost=0;
+    var number = largetotalCost.toFixed(2);
+    largeTotalelem.innerHTML = "R" + number;
+
+    largeQty.innerHTML = largetotalCost / 120.75;
     totalElem.innerHTML = "R" + totalAmount;
+
+    smalltotalCost = 0;
+    var number = smalltotalCost.toFixed(2);
+    smallTotalelem.innerHTML = "R" + number;
+
+    smallQty.innerHTML = smalltotalCost / 22.99;
+    totalElem.innerHTML = "R" + totalAmount;
+
 
 }
 function mediumsub() {
@@ -164,6 +193,23 @@ function largecostadd() {
     largeTotalelem.innerHTML = "R" + number;
 
     largeQty.innerHTML = largetotalCost / 120.75;
+    totalElem.innerHTML = "R" + totalAmount;
+
+
+    smalltotalCost = 0;
+
+    var number = smalltotalCost.toFixed(2);
+    smallTotalelem.innerHTML = "R" + number;
+
+    smallQty.innerHTML = smalltotalCost / 22.99;
+    totalElem.innerHTML = "R" + totalAmount;
+
+    mediumtotalCost = 0;
+
+    var number = mediumtotalCost.toFixed(2);
+    mediumTotalelem.innerHTML = "R" + number;
+
+    mediumQty.innerHTML = mediumtotalCost / 60.50;
     totalElem.innerHTML = "R" + totalAmount;
 
 }
