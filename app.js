@@ -265,15 +265,19 @@ function payment() {
 
 
     if (money == totalAmount) {
+        display.classList.add("hidden");
         var time = 4000;
 
         setTimeout(() => {
+            display.classList.remove("hidden");
             display.innerHTML = 'Enjoy" your pizzas';
         }, time);
 
     }
     else {
+        display.classList.add("hidden");
         setTimeout(() => {
+            display.classList.remove("hidden");
             display.innerHTML = "Sorry - that is not enough money!"
         }, 4000);
     }
