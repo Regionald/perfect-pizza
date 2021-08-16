@@ -123,7 +123,7 @@ function mediumcostadd() {
     var qtynumber = (mediumtotalCost / 60.50).toFixed(0);
     mediumQty.innerHTML = qtynumber;
 
-    largetotalCost=0;
+    largetotalCost = 0;
     var number = largetotalCost.toFixed(2);
     largeTotalelem.innerHTML = "R" + number;
 
@@ -258,14 +258,25 @@ largeAddbtn.addEventListener('click', largeadd);
 largeButbtn.addEventListener('click', largecostadd);
 
 function payment() {
-    
+
     var number = parseFloat(cash.value);
     display.classList.remove("hidden");
     var money = number.toFixed(2);
+
+
     if (money == totalAmount) {
-        display.innerHTML = 'Enjoy" your pizzas';
+        var time = 4000;
+
+        setTimeout(() => {
+            display.innerHTML = 'Enjoy" your pizzas';
+        }, time);
+
     }
-    else { display.innerHTML = "Sorry - that is not enough money!" }
+    else {
+        setTimeout(() => {
+            display.innerHTML = "Sorry - that is not enough money!"
+        }, 4000);
+    }
 
     smalltotalCost = 0;
     totalAmount = 0;
@@ -298,7 +309,7 @@ function payment() {
     totalElem.innerHTML = "R" + totalAmount;
 
 
-    
+
 }
 paymBtn.addEventListener('click', payment);
 
