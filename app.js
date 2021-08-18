@@ -81,10 +81,6 @@ function smallsub() {
     smalltotalCost -= 22.99;
     if (smalltotalCost < 0) {
         smalltotalCost += 22.99;
-        display.classList.add("hidden");
-        cash.classList.add("hidden");
-        amountLabel.classList.add("hidden");
-        paymBtn.classList.add("hidden");
         return;
     }
 
