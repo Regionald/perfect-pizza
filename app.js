@@ -262,7 +262,7 @@ function payment() {
 
     if (money == totalAmount) {
         display.classList.add("hidden");
-        var time = 4000;
+        var time = 3000;
 
         setTimeout(() => {
             display.classList.remove("hidden");
@@ -270,12 +270,21 @@ function payment() {
         }, time);
 
     }
-    else {
+    else if (money <= totalAmount) {
         display.classList.add("hidden");
         setTimeout(() => {
             display.classList.remove("hidden");
-            display.innerHTML = "Sorry - that is not enough money!"
-        }, 4000);
+            display.innerHTML = "Sorry - that is not enough money!";
+        }, 3000);
+    }
+    else if (money => totalAmount) {
+        var dif = (money - totalAmount).toFixed(2);
+        display.classList.add("hidden");
+        setTimeout(() => {
+            display.classList.remove("hidden");
+            display.innerHTML = `You over paid by R${dif} , R${dif} will be given to charity,
+            please enjoy your Pizza and thank you for charity work`;
+        }, 3000);
     }
 
     smalltotalCost = 0;
