@@ -255,19 +255,55 @@ largeButbtn.addEventListener('click', largecostadd);
 
 function payment() {
 
+
+
     var number = parseFloat(cash.value);
     display.classList.remove("hidden");
     var money = number.toFixed(2);
 
-
     if (money == totalAmount) {
-        display.classList.add("hidden");
-        var time = 3000;
+        if (money == totalAmount) {
+            display.classList.add("hidden");
+            var time = 3000;
 
-        setTimeout(() => {
-            display.classList.remove("hidden");
-            display.innerHTML = 'Enjoy" your pizzas';
-        }, time);
+            setTimeout(() => {
+                display.classList.remove("hidden");
+                display.innerHTML = 'Enjoy" your pizzas';
+                setTimeout(() => { location.reload(); }, 4000);
+            }, time);
+
+        }
+
+
+        smalltotalCost = 0;
+        totalAmount = 0;
+        shoppingCart.classList.remove("hidden");
+
+        var number = smalltotalCost.toFixed(2);
+        smallTotalelem.innerHTML = "R" + number;
+
+        smallQty.innerHTML = smalltotalCost / 22.99;
+        totalElem.innerHTML = "R" + totalAmount;
+
+        mediumtotalCost = 0;
+        totalAmount = 0;
+        shoppingCart.classList.remove("hidden");
+
+        var number = mediumtotalCost.toFixed(2);
+        mediumTotalelem.innerHTML = "R" + number;
+
+        mediumQty.innerHTML = mediumtotalCost / 60.50;
+        totalElem.innerHTML = "R" + totalAmount;
+
+        largetotalCost = 0;
+        totalAmount = 0;
+        shoppingCart.classList.remove("hidden");
+
+        var number = largetotalCost.toFixed(2);
+        largeTotalelem.innerHTML = "R" + number;
+
+        largeQty.innerHTML = largetotalCost / 120.75;
+        totalElem.innerHTML = "R" + totalAmount;
 
     }
     else if (money <= totalAmount) {
@@ -275,48 +311,17 @@ function payment() {
         setTimeout(() => {
             display.classList.remove("hidden");
             display.innerHTML = "Sorry - that is not enough money!";
+            setTimeout(() => { display.classList.add("hidden"); }, 4000);
         }, 3000);
     }
     else if (money => totalAmount) {
-        var dif = (money - totalAmount).toFixed(2);
         display.classList.add("hidden");
         setTimeout(() => {
             display.classList.remove("hidden");
-            display.innerHTML = `You over paid by R${dif} , R${dif} will be given to charity,
-            please enjoy your Pizza and thank you for charity work`;
+            display.innerHTML = `please do not over pay`;
+            setTimeout(() => { display.classList.add("hidden"); }, 4000);
         }, 3000);
     }
-
-    smalltotalCost = 0;
-    totalAmount = 0;
-    shoppingCart.classList.remove("hidden");
-
-    var number = smalltotalCost.toFixed(2);
-    smallTotalelem.innerHTML = "R" + number;
-
-    smallQty.innerHTML = smalltotalCost / 22.99;
-    totalElem.innerHTML = "R" + totalAmount;
-
-    mediumtotalCost = 0;
-    totalAmount = 0;
-    shoppingCart.classList.remove("hidden");
-
-    var number = mediumtotalCost.toFixed(2);
-    mediumTotalelem.innerHTML = "R" + number;
-
-    mediumQty.innerHTML = mediumtotalCost / 60.50;
-    totalElem.innerHTML = "R" + totalAmount;
-
-    largetotalCost = 0;
-    totalAmount = 0;
-    shoppingCart.classList.remove("hidden");
-
-    var number = largetotalCost.toFixed(2);
-    largeTotalelem.innerHTML = "R" + number;
-
-    largeQty.innerHTML = largetotalCost / 120.75;
-    totalElem.innerHTML = "R" + totalAmount;
-
 
 
 }
