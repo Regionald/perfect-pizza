@@ -148,12 +148,12 @@ largeSubbtn.addEventListener('click', largesub);
 
 function payment() {
 
-    var number = parseFloat(cash.value);
+    const number = parseFloat(cash.value);
     display.classList.remove("hidden");
 
-    if (number.toFixed(2) == totalAmount) {
-        
-        if (number.toFixed(2) == totalAmount) {
+    if (number == totalAmount) {
+
+        if (number == totalAmount) {
             display.classList.add("hidden");
             var time = 3000;
 
@@ -173,7 +173,7 @@ function payment() {
         largeTotalelem.innerHTML = "R0.00";
         totalElem.innerHTML = "R" + totalAmount;
     }
-    else if (number.toFixed(2) < totalAmount) {
+    else if (number < totalAmount) {
         display.classList.add("hidden");
         setTimeout(() => {
             display.classList.remove("hidden");
@@ -181,7 +181,7 @@ function payment() {
             setTimeout(() => { display.classList.add("hidden"); }, 4000);
         }, 3000);
     }
-    else if (number.toFixed(2) > totalAmount) {
+    else {
         display.classList.add("hidden");
         setTimeout(() => {
             display.classList.remove("hidden");
