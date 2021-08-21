@@ -26,243 +26,134 @@ const largeAddbtn = document.querySelector(".largeAddbtn");
 const largeSubbtn = document.querySelector(".largeSubbtn");
 const largeQty = document.querySelector(".largeQty");
 
-
-var smalltotalCost = 0;
-var mediumtotalCost = 0;
-var largetotalCost = 0;
 var totalAmount = 0;
-
+const carter = cart();
 
 function smallcostadd() {
 
-    smalltotalCost = 22.99;
-    totalAmount = 22.99;
     shoppingCart.classList.remove("hidden");
+    carter.qtyIncrement('small');
+    smallQty.innerHTML = carter.smallValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
 
-    var number = smalltotalCost.toFixed(2);
-    smallTotalelem.innerHTML = "R" + number;
-
-    smallQty.innerHTML = smalltotalCost / 22.99;
+    smallTotalelem.innerHTML = "R" + (carter.smallValue() * 22.99).toFixed(2);
     totalElem.innerHTML = "R" + totalAmount;
 
-    mediumtotalCost = 0;
-    var number = mediumtotalCost.toFixed(2);
-    mediumTotalelem.innerHTML = "R" + number;
-
-    mediumQty.innerHTML = mediumtotalCost / 60.50;
-    totalElem.innerHTML = "R" + totalAmount;
-
-    largetotalCost = 0;
-    var number = largetotalCost.toFixed(2);
-    largeTotalelem.innerHTML = "R" + number;
-
-    largeQty.innerHTML = largetotalCost / 120.75;
-    totalElem.innerHTML = "R" + totalAmount;
-
-}
+};
 function smalladd() {
-    smalltotalCost += 22.99;
-    var number = smalltotalCost.toFixed(2);
-    smallTotalelem.innerHTML = "R" + number;
-    cash.classList.remove("hidden");
-    amountLabel.classList.remove("hidden");
-    paymBtn.classList.remove("hidden");
+    carter.unhide();
+    carter.qtyIncrement('small');
+    smallQty.innerHTML = carter.smallValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
 
-    totalAmount += 22.99;
-    var tnumber = totalAmount.toFixed(2);
-    totalElem.innerHTML = "R" + tnumber;
+    smallTotalelem.innerHTML = "R" + (carter.smallValue() * 22.99).toFixed(2);
+    totalElem.innerHTML = "R" + totalAmount;
 
-    var qtynumber = (smalltotalCost / 22.99).toFixed(0);
-    smallQty.innerHTML = qtynumber;
+};
+function smallsub() {
+
+    carter.qtydecrement('small');
+    smallQty.innerHTML = carter.smallValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
+
+    if (totalAmount == 0) {
+        carter.hide();
+    }
+
+    smallTotalelem.innerHTML = "R" + (carter.smallValue() * 22.99).toFixed(2);
+    totalElem.innerHTML = "R" + totalAmount;
 
 };
 smallAddbtn.addEventListener('click', smalladd);
-function smallsub() {
-    smalltotalCost -= 22.99;
-    if (smalltotalCost < 0) {
-        smalltotalCost += 22.99;
-        return;
-    }
-
-    var number = smalltotalCost.toFixed(2);
-    smallTotalelem.innerHTML = "R" + number;
-
-    totalAmount -= 22.99;
-    if (totalAmount == 0) {
-        display.classList.add("hidden");
-        cash.classList.add("hidden");
-        amountLabel.classList.add("hidden");
-        paymBtn.classList.add("hidden");
-    }
-    var tnumber = totalAmount.toFixed(2);
-    totalElem.innerHTML = "R" + tnumber;
-
-    var qtynumber = (smalltotalCost / 22.99).toFixed(0);
-    smallQty.innerHTML = qtynumber;
-    totalAmount = qtynumber * 22.99;
-};
 smallSubbtn.addEventListener('click', smallsub);
-
 smallButbtn.addEventListener('click', smallcostadd);
 
-///////////////////////////////////medium pizzaaaa//////////////////////////////////////////
 
 function mediumcostadd() {
 
-    mediumtotalCost = 60.50;
-    totalAmount = 60.50;
     shoppingCart.classList.remove("hidden");
+    carter.qtyIncrement('medium');
+    mediumQty.innerHTML = carter.mediumValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
 
-    var number = mediumtotalCost.toFixed(2);
-    mediumTotalelem.innerHTML = "R" + number;
-
-    var qtynumber = (mediumtotalCost / 60.50).toFixed(0);
-    mediumQty.innerHTML = qtynumber;
-
-    largetotalCost = 0;
-    var number = largetotalCost.toFixed(2);
-    largeTotalelem.innerHTML = "R" + number;
-
-    largeQty.innerHTML = largetotalCost / 120.75;
+    mediumTotalelem.innerHTML = "R" + carter.mediumValue() * 60.50;
     totalElem.innerHTML = "R" + totalAmount;
-
-    smalltotalCost = 0;
-    var number = smalltotalCost.toFixed(2);
-    smallTotalelem.innerHTML = "R" + number;
-
-    smallQty.innerHTML = smalltotalCost / 22.99;
-    totalElem.innerHTML = "R" + totalAmount;
-
 
 }
 function mediumsub() {
-    mediumtotalCost -= 60.50;
-    if (mediumtotalCost < 0) {
-        mediumtotalCost += 60.50;
-        return;
-    }
-    var number = mediumtotalCost.toFixed(2);
-    mediumTotalelem.innerHTML = "R" + number;
 
-    totalAmount -= 60.50;
+    carter.qtydecrement('medium');
+    mediumQty.innerHTML = carter.mediumValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
     if (totalAmount == 0) {
-        display.classList.add("hidden");
-        cash.classList.add("hidden");
-        amountLabel.classList.add("hidden");
-        paymBtn.classList.add("hidden");
+        carter.hide();
     }
-    var tnumber = totalAmount.toFixed(2);
-    totalElem.innerHTML = "R" + tnumber;
 
-    var qtynumber = (mediumtotalCost / 60.50).toFixed(0);
-    mediumQty.innerHTML = qtynumber;
+    mediumTotalelem.innerHTML = "R" + (carter.mediumValue() * 60.50).toFixed(2);
+    totalElem.innerHTML = "R" + totalAmount;
 };
-mediumSubbtn.addEventListener('click', mediumsub);
+
 function mediumadd() {
-    mediumtotalCost += 60.50;
-    var number = mediumtotalCost.toFixed(2);
-    mediumTotalelem.innerHTML = "R" + number;
-    cash.classList.remove("hidden");
-    amountLabel.classList.remove("hidden");
-    paymBtn.classList.remove("hidden");
 
-    totalAmount += 60.50;
-    var tnumber = totalAmount.toFixed(2);
-    totalElem.innerHTML = "R" + tnumber;
+    carter.unhide();
+    carter.qtyIncrement('medium');
+    mediumQty.innerHTML = carter.mediumValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
 
-    var qtynumber = (mediumtotalCost / 60.50).toFixed(0);
-    mediumQty.innerHTML = qtynumber;
+    mediumTotalelem.innerHTML = (carter.mediumValue() * 60.50).toFixed(2);
+    totalElem.innerHTML = totalAmount;
 
 };
 mediumAddbtn.addEventListener('click', mediumadd);
-
+mediumSubbtn.addEventListener('click', mediumsub);
 mediumButbtn.addEventListener('click', mediumcostadd);
 
 //////////////////////////large pizaa/////////////////////////////
 function largecostadd() {
-
-    largetotalCost = 120.75;
-    totalAmount = 120.75;
     shoppingCart.classList.remove("hidden");
+    carter.qtyIncrement('large');
+    largeQty.innerHTML = carter.largeValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
 
-    var number = largetotalCost.toFixed(2);
-    largeTotalelem.innerHTML = "R" + number;
-
-    largeQty.innerHTML = largetotalCost / 120.75;
-    totalElem.innerHTML = "R" + totalAmount;
-
-
-    smalltotalCost = 0;
-
-    var number = smalltotalCost.toFixed(2);
-    smallTotalelem.innerHTML = "R" + number;
-
-    smallQty.innerHTML = smalltotalCost / 22.99;
-    totalElem.innerHTML = "R" + totalAmount;
-
-    mediumtotalCost = 0;
-
-    var number = mediumtotalCost.toFixed(2);
-    mediumTotalelem.innerHTML = "R" + number;
-
-    mediumQty.innerHTML = mediumtotalCost / 60.50;
+    largeTotalelem.innerHTML = "R" + carter.largeValue() * 120.75;
     totalElem.innerHTML = "R" + totalAmount;
 
 }
 function largesub() {
-    largetotalCost -= 120.75;
-    if (largetotalCost < 0) {
-        largetotalCost += 120.75;
-        return;
-    }
-    var number = largetotalCost.toFixed(2);
-    largeTotalelem.innerHTML = "R" + number;
 
-    totalAmount -= 120.75;
+    carter.qtydecrement('large');
+    largeQty.innerHTML = carter.largeValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
     if (totalAmount == 0) {
-        display.classList.add("hidden");
-        cash.classList.add("hidden");
-        amountLabel.classList.add("hidden");
-        paymBtn.classList.add("hidden");
+        carter.hide();
     }
-    var tnumber = totalAmount.toFixed(2);
-    totalElem.innerHTML = "R" + tnumber;
 
-    var qtynumber = (largetotalCost / 120.75).toFixed(0);
-    largeQty.innerHTML = qtynumber;
+    largeTotalelem.innerHTML = "R" + (carter.largeValue() * 120).toFixed(2);
+    totalElem.innerHTML = "R" + totalAmount;
 };
-largeSubbtn.addEventListener('click', largesub);
 
 function largeadd() {
-    largetotalCost += 120.75;
-    var number = largetotalCost.toFixed(2);
-    largeTotalelem.innerHTML = "R" + number;
-    cash.classList.remove("hidden");
-    amountLabel.classList.remove("hidden");
-    paymBtn.classList.remove("hidden");
 
+    carter.unhide();
+    carter.qtyIncrement('large');
+    largeQty.innerHTML = carter.largeValue();
+    totalAmount = (carter.totalPrice()).toFixed(2);
 
-    totalAmount += 120.75;
-    var tnumber = totalAmount.toFixed(2);
-    totalElem.innerHTML = "R" + tnumber;
-
-    var qtynumber = (largetotalCost / 120.75).toFixed(0);
-    largeQty.innerHTML = qtynumber;
-
+    largeTotalelem.innerHTML = "R" + (carter.largeValue() * 120).toFixed(2);
+    totalElem.innerHTML = totalAmount;
 };
 largeAddbtn.addEventListener('click', largeadd);
 largeButbtn.addEventListener('click', largecostadd);
+largeSubbtn.addEventListener('click', largesub);
 
 function payment() {
 
-
-
     var number = parseFloat(cash.value);
     display.classList.remove("hidden");
-    var money = number.toFixed(2);
 
-    if (money == totalAmount) {
-        if (money == totalAmount) {
+    if (number.toFixed(2) == totalAmount) {
+        
+        if (number.toFixed(2) == totalAmount) {
             display.classList.add("hidden");
             var time = 3000;
 
@@ -271,42 +162,18 @@ function payment() {
                 display.innerHTML = 'Enjoy" your pizzas';
                 setTimeout(() => { location.reload(); }, 4000);
             }, time);
-
         }
-
-
-        smalltotalCost = 0;
         totalAmount = 0;
         shoppingCart.classList.remove("hidden");
-
-        var number = smalltotalCost.toFixed(2);
-        smallTotalelem.innerHTML = "R" + number;
-
-        smallQty.innerHTML = smalltotalCost / 22.99;
+        smallQty.innerHTML = 0;
+        smallTotalelem.innerHTML = "R0.00";
+        mediumQty.innerHTML = 0;
+        mediumTotalelem.innerHTML = "R0.00";
+        largeQty.innerHTML = 0;
+        largeTotalelem.innerHTML = "R0.00";
         totalElem.innerHTML = "R" + totalAmount;
-
-        mediumtotalCost = 0;
-        totalAmount = 0;
-        shoppingCart.classList.remove("hidden");
-
-        var number = mediumtotalCost.toFixed(2);
-        mediumTotalelem.innerHTML = "R" + number;
-
-        mediumQty.innerHTML = mediumtotalCost / 60.50;
-        totalElem.innerHTML = "R" + totalAmount;
-
-        largetotalCost = 0;
-        totalAmount = 0;
-        shoppingCart.classList.remove("hidden");
-
-        var number = largetotalCost.toFixed(2);
-        largeTotalelem.innerHTML = "R" + number;
-
-        largeQty.innerHTML = largetotalCost / 120.75;
-        totalElem.innerHTML = "R" + totalAmount;
-
     }
-    else if (money <= totalAmount) {
+    else if (number.toFixed(2) < totalAmount) {
         display.classList.add("hidden");
         setTimeout(() => {
             display.classList.remove("hidden");
@@ -314,7 +181,7 @@ function payment() {
             setTimeout(() => { display.classList.add("hidden"); }, 4000);
         }, 3000);
     }
-    else if (money => totalAmount) {
+    else if (number.toFixed(2) > totalAmount) {
         display.classList.add("hidden");
         setTimeout(() => {
             display.classList.remove("hidden");
@@ -322,8 +189,6 @@ function payment() {
             setTimeout(() => { display.classList.add("hidden"); }, 4000);
         }, 3000);
     }
-
-
 }
 paymBtn.addEventListener('click', payment);
 
